@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "bank_account",
+    "counter",
+    "count_vowels",
+    "largest_number",
+    "rectangle",
+    "reverse_words",
+    "temperature",
+]

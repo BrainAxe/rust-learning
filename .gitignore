@@ -1,0 +1,8 @@
+# Rust build output (single shared workspace target dir)
+/target
+
+# Backup files from some editors
+**/*.rs.bk
+
+# Environment / OS junk
+.DS_Store
