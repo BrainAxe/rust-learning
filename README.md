@@ -15,21 +15,7 @@ rust-learning/
 ├── counter/            # Practice: counter
 │   ├── Cargo.toml
 │   └── src/main.rs
-├── count_vowels/       # Practice: count vowels in a string
-│   ├── Cargo.toml
-│   └── src/main.rs
-├── largest_number/     # Practice: find the largest number
-│   ├── Cargo.toml
-│   └── src/main.rs
-├── rectangle/          # Practice: rectangle (structs/methods)
-│   ├── Cargo.toml
-│   └── src/main.rs
-├── reverse_words/      # Practice: reverse words in a string
-│   ├── Cargo.toml
-│   └── src/main.rs
-└── temperature/        # Practice: temperature conversion
-    ├── Cargo.toml
-    └── src/main.rs
+└── ...                 # more practice projects
 ```
 
 ## Cargo commands
@@ -48,6 +34,32 @@ Run these from the workspace root (`rust-learning/`). Use `-p <project>` to targ
 | `cargo clean` | Delete the `target/` build directory |
 | `cargo fmt` | Format all code |
 | `cargo clippy` | Lint all code |
+
+### Inspecting module structure
+
+Uses [`cargo-modules`](https://crates.io/crates/cargo-modules) (install with `cargo install cargo-modules`).
+
+```bash
+cargo modules structure -p auth_service            # print the module/item tree
+cargo modules dependencies -p auth_service          # module dependency graph (DOT)
+cargo modules dependencies -p auth_service | dot -Tpng -o modules.png   # render to image
+```
+
+### Managing dependencies
+
+Add a dependency to a **specific** project with `-p <project>` (run from the workspace root). This edits that project's own `Cargo.toml` and updates the shared `Cargo.lock` — other projects are untouched.
+
+```bash
+cargo add rand -p bank_account                    # add the `rand` crate
+cargo add serde -p bank_account --features derive # add with a feature enabled
+cargo add serde_json@1.0 -p bank_account          # pin a version
+cargo add tokio -p bank_account --dev             # dev-dependency (tests/benches only)
+cargo remove rand -p bank_account                 # remove a dependency
+```
+
+Or `cd bank_account` first and drop the `-p` flag (`cargo add rand`). You can also edit the project's `Cargo.toml` by hand under `[dependencies]` and run `cargo build`.
+
+> Note: tools like `cargo-modules` are installed globally (`cargo install ...`), **not** listed as dependencies — only crates your code actually `use`s belong in `Cargo.toml`.
 
 ### Adding a new practice project
 
