@@ -23,6 +23,10 @@ name = "largest_number"
 version = "0.1.0"
 
 [[package]]
+name = "median_mode"
+version = "0.1.0"
+
+[[package]]
 name = "rectangle"
 version = "0.1.0"
 
