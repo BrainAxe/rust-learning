@@ -8,5 +8,5 @@ members = [
     "rectangle",
     "reverse_words",
     "temperature",
-    "auth_service", "median_mode",
+    "auth_service", "median_mode", "pig_latin",
 ]
