@@ -1,18 +1,10 @@
-// Find the largest number in the array
+// Find the largest number
 
-fn largest(numbers: &[i32]) -> i32 {
-    let mut largest_num = numbers[0];
+fn largest<T: std::cmp::PartialOrd>(numbers: &[T]) -> &T {
+    let mut largest_num = &numbers[0];
 
-    // Dereference
-    // for num in numbers {
-    //     if *num >= largest_num {
-    //         largest_num = *num;
-    //     }
-    // }
-
-    // Destructure
-    for &num in numbers {
-        if num >= largest_num {
+    for num in numbers {
+        if num > largest_num {
             largest_num = num;
         }
     }
@@ -20,8 +12,15 @@ fn largest(numbers: &[i32]) -> i32 {
 }
 
 fn main() {
-    let nums = [25, 11, 45, 37, 105, 97, 88];
+    let nums = vec![25, 11, 45, 37, 105, 97, 88];
     let result = largest(&nums);
-
     println!("The Largest Number is: {result}");
+
+    let fractions = vec![25.0, 11.0, 37.5, 88.8];
+    let result = largest(&fractions);
+    println!("The Largest Number is: {result}");
+
+    let chars = vec!['r', 't', 'y', 'z'];
+    let result = largest(&chars);
+    println!("The Largest char is: {result}");
 }
