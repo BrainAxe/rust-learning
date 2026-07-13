@@ -11,5 +11,5 @@ members = [
     "auth_service",
     "median_mode",
     "pig_latin",
-    "employee_dept", "aggregator",
+    "employee_dept", "aggregator", "lifetimes", "adder",
 ]
